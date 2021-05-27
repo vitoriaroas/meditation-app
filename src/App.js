@@ -6,7 +6,6 @@ import Home from './scenes/Home'
 import Login from './scenes/Login'
 import Signup from './scenes/Signup'
 import Header from './components/Header'
-import Stream from './img/stream.jpg'
 
 function App() {
   return (
@@ -16,10 +15,8 @@ function App() {
         <Switch>
           <Route path="/Login" component={Login} />
           <Route path="/Signup" component={Signup} />
-          <Route path="/Home" component={Home} />
+          <Route path="/" component={Home} />
         </Switch>
-        <img src={Stream} alt="Stream" />
-       {/* <Footer style={{ textAlign: 'center' }}>©2021 Created by Vitoria Roas</Footer>  */}
       </Router>
     </div>
   )
