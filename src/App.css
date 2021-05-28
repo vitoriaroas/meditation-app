@@ -8,18 +8,30 @@ body {
   min-height: 100vh;
 }
 
-.container {
-  margin: 100px;
-  padding: 10px;
+body {
+  background-image: url('./img/water.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.welcome {
+  color: white;
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.hero {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-items: center;
   align-items: center;
-  color: white;
 }
-body {
-  background-image: url('./img/stream.jpg');
-  background-position: center center;
-  background-size: cover;
+.buttonArea {
+  height: 3rem;
+  min-width: 10rems;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
