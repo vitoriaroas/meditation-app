@@ -7,16 +7,29 @@ function Home() {
   const start = () => {
     audio.play()
   }
+
+ const stop = () => {
+   audio.pause()
+ }
   return (
     <>
       <h1 class="container">Welcome</h1>
       <div class="container">
         <Button onClick={start} variant="dark">
-          2 min
+          Start
         </Button>{' '}
-        <Button variant="dark">5 min</Button>{' '}
-        <Button variant="dark">10 min</Button>{' '}
-        <Button variant="dark">15 min</Button>{' '}
+        <Button onClick={start} variant="dark">
+          5 min
+        </Button>{' '}
+        <Button onClick={start} variant="dark">
+          10 min
+        </Button>{' '}
+        <Button onClick={start} variant="dark">
+          15 min
+        </Button>{' '}
+        <Button onClick={stop} variant="dark">
+          Stop
+        </Button>{' '}
       </div>
     </>
   )
