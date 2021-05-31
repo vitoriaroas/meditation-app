@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: rgb(34, 193, 195);
   background-image: radial-gradient(
     circle,
@@ -6,12 +6,13 @@ body {
     rgba(56, 107, 66, 1) 100%
   );
   min-height: 100vh;
-}
+} */
 
 body {
   background-image: url('./img/water.jpg');
   background-position: center center;
   background-size: cover;
+  min-height: 100vh;
 }
 
 .welcome {
@@ -34,4 +35,30 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border: 2px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+  transition: all 0.5s ease;
 }
+
+
+
+.buttonArea:hover {
+  color: black;
+  background: white;
+}
+
+.time-display{
+  position: absolute;
+  bottom: 10%;
+  color: white;
+  font-size: 50px;
+
+}
+
+.login-container {
+  background: rgba(222, 251, 255, 0.75);
+  padding: 3%; 
+  width: min-content
+  }
