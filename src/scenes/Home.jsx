@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 
 function Home() {
-  let audio = new Audio('/beach.mp3')
+  let audio = new Audio('/stream.mp3')
 
   const start = () => {
     audio.play()
