@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import React, { useState, useEffect } from 'react'
 
-const useAudio = (url) => {
+const useAudio = () => {
   const [audio] = useState(new Audio('/stream.mp3'))
   const [playing, setPlaying] = useState(false)
 
