@@ -4,9 +4,9 @@ import Dropdown from 'react-bootstrap/Dropdown'
 
 function Header() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
           Mindful Space
         </a>
         <Dropdown>
