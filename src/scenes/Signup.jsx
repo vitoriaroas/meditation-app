@@ -1,34 +1,53 @@
 import React, { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import firebase from 'firebase'
+import { useHistory } from 'react-router-dom'
 
-const Signup = () => {
+const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [user, setUser] = useState('')
+  let history = useHistory()
 
-  const user = {
-    email: email,
-    password: password,
+  const createUser = (uid) => {
+    const user = {
+      email: email,
+      password: password,
+      uid,
+    }
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data)
+        history.push('/')
+      })
+      .catch((err) => console.log(err))
   }
 
-  const createUser = () => {
+  const signUpHandler = (event) => {
+    event.preventDefault()
     firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then((data) => console.log(data))
+    .then((res) => {
+      const json = JSON.stringify(res.user)
+      localStorage.setItem('user', json)
+      console.log(res.user)
+      createUser(res.user.uid)
+    })
     .catch((err) => console.log(err))
   }
 
-  //   fetch('http://localhost:5000/users')
-  //     .then((response) => response.json())
-  //     .then((data) => (data))
-  //     .catch((err) => console.log(err))
-  // }
+ 
 
 
   return (
     <Container className="login-container">
-      <Form>
+      <Form onSubmit= {(e) => signUpHandler(e)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -52,7 +71,7 @@ const Signup = () => {
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Remember me" />
         </Form.Group>
-        <Button variant="dark" type="submit" onClick={() => createUser()}>
+        <Button variant="dark" type="submit" onClick={(e) => signUpHandler(e)}>
           Sign up
         </Button>
       </Form>
@@ -60,4 +79,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SignUp
