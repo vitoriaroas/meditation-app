@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Dropdown from 'react-bootstrap/Dropdown'
+// import { UserContext } from '../App'
 
 function Header() {
+  // const { user } = useContext(UserContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -11,7 +13,7 @@ function Header() {
         </a>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
-            Menu
+            {/* {user ? user.uid : 'not logged in'} */}
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item>
