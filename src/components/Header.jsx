@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Dropdown from 'react-bootstrap/Dropdown'
+
 // import { UserContext } from '../App'
 
 function Header() {
+  const logOut = () => {
+   localStorage.clear()
+  }
   // const { user } = useContext(UserContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,14 +23,13 @@ function Header() {
             <Dropdown.Item>
               <Link to="/">Home</Link>
             </Dropdown.Item>
-            <>
+      
               <Dropdown.Item>
                 <Link to="/Login">Login</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/Signup">Sign Up</Link>
+                <Link to="" onClick={logOut}>Logout</Link>
               </Dropdown.Item>
-            </>
           </Dropdown.Menu>
         </Dropdown>
       </div>

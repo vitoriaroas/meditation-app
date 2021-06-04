@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import firebase from 'firebase'
 import { useHistory } from 'react-router-dom'
+import { UserContext } from '../App'
 
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState('')
+  const { user, setUser } = useContext(UserContext)
   let history = useHistory()
 
   const createUser = (uid) => {
     const user = {
       email: email,
       password: password,
+      count: 0,
       uid,
     }
     fetch('http://localhost:5000/users', {
@@ -31,23 +33,20 @@ const SignUp = () => {
   const signUpHandler = (event) => {
     event.preventDefault()
     firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then((res) => {
-      const json = JSON.stringify(res.user)
-      localStorage.setItem('user', json)
-      console.log(res.user)
-      createUser(res.user.uid)
-    })
-    .catch((err) => console.log(err))
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        const json = JSON.stringify(res.user)
+        localStorage.setItem('user', json)
+        console.log(res.user)
+        createUser(res.user.uid)
+      })
+      .catch((err) => console.log(err))
   }
-
- 
-
 
   return (
     <Container className="login-container">
-      <Form onSubmit= {(e) => signUpHandler(e)}>
+      <Form onSubmit={(e) => signUpHandler(e)}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control

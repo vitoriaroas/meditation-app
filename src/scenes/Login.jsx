@@ -1,24 +1,25 @@
-import React, { useState } from 'react'
-// import { UserContext } from '../App'
+import React, { useState, useContext } from 'react'
 import { Form, Button, Container, Row } from 'react-bootstrap'
 import firebase from 'firebase'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
+import { UserContext } from '../App'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState('')
+  const { user, setUser } = useContext(UserContext)
   let history = useHistory()
-
+  console.log(user)
   const handleSubmit = (event) => {
     event.preventDefault()
     firebase
-    .auth()
+      .auth()
       .signInWithEmailAndPassword(email, password)
       .then((res) => {
-        const json = JSON.stringify(res.user)
+        const json = JSON.stringify(res.user.uid)
         localStorage.setItem('user', json)
-        setUser(res.user)
+        console.log('user in login', res.user)
+        setUser(res.user.uid)
         history.push('/')
       })
       .catch((err) => console.error(err))
@@ -65,6 +66,11 @@ const Login = () => {
         <Button variant="dark" type="submit" onClick={(e) => handleSubmit(e)}>
           Login
         </Button>
+        <Link to="/Signup">
+          <Button variant="dark" type="submit">
+            Sign-up
+          </Button>
+        </Link>
       </Form>
     </Container>
   )
