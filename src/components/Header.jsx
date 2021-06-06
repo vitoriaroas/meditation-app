@@ -1,14 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import Dropdown from 'react-bootstrap/Dropdown'
 
-// import { UserContext } from '../App'
+import { UserContext } from '../App'
 
 function Header() {
   const logOut = () => {
    localStorage.clear()
   }
-  // const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext)
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -17,7 +17,7 @@ function Header() {
         </a>
         <Dropdown>
           <Dropdown.Toggle variant="dark" id="dropdown-basic">
-            {/* {user ? user.uid : 'not logged in'} */}
+            {!user ? "Guest" : user.displayName || "User!"}
           </Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item>

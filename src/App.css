@@ -1,14 +1,17 @@
 body {
-  background-image: url('./img/water.jpg');
+  background-image: url('./img/bk2.png');
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
 }
 
 .welcome {
-  color: white;
-  font-size: 6rem;
-  font-weight: 700;
+  color: black;
+  font-size: 2rem;
+  font-weight: 100;
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Lora', serif;
+  text-align: center;
 }
 
 .hero {
@@ -18,7 +21,11 @@ body {
   flex-direction: column;
   justify-items: center;
   align-items: center;
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Lora', serif;
+  
 }
+
 .buttonArea {
   height: 3rem;
   min-width: 10rems;
@@ -45,7 +52,7 @@ body {
 }
 
 .login-container {
-  background: rgba(222, 251, 255, 0.75);
+  background: rgb(255, 255, 255);
   padding: 3%;
   width: min-content;
 }

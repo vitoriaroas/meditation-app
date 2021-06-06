@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import soundx1 from '../sounds/beach1min.mp3'
 import { UserContext } from '../App'
 import { Link } from 'react-router-dom'
+import AnimatedNumber from 'react-animated-number'
 
 const Player = () => {
   const [count, setCount] = useState(0)
@@ -31,8 +32,6 @@ const Player = () => {
 
   return (
     <section className="hero">
-      <div className="welcome">Welcome</div>
-
       <div className="buttonArea">
         <Button
           onClick={() => {
@@ -45,9 +44,18 @@ const Player = () => {
           Meditate
         </Button>
       </div>
+      <AnimatedNumber
+        value={count}
+        style={{
+          fontSize: 150,
+        }}
+        formatValue={(v) => v.toFixed(0)}
+        duration={1000}
+        frameStyle={(perc) => ({ opacity: perc / 100 })}
+      />
       <div className="buttonArea">
         <Link to="/Signup">
-          <Button variant="dark">save</Button>
+          <Button variant="dark">Save </Button>
         </Link>
       </div>
     </section>
