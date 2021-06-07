@@ -24,9 +24,20 @@ function App() {
     setUser(userFromLs)
   }, [])
 
+  function SignOut() {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        setUser(null)
+        localStorage.setItem('user', null)
+      })
+      .catch((error) => console.log(error))
+  }
+
   return (
     <div>
-      <UserContext.Provider value={{ user, setUser, firebaseAuth }}>
+      <UserContext.Provider value={{ user, setUser, firebaseAuth, SignOut }}>
         <Router>
           <Header />
           <Switch>

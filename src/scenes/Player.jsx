@@ -1,17 +1,18 @@
 import Button from 'react-bootstrap/Button'
 import React, { useContext, useState } from 'react'
-import soundx1 from '../sounds/beach1min.mp3'
 import { UserContext } from '../App'
 import { Link } from 'react-router-dom'
 import AnimatedNumber from 'react-animated-number'
+
+import sound from '../sounds/meditation.mp3'
+import img from '../img/bk4.png'
+import yoga from '../img/bk6.png'
 
 const Player = () => {
   const [count, setCount] = useState(0)
   const { user } = useContext(UserContext)
 
-  const soundBite = new Audio(soundx1)
-  console.log(count)
-  console.log('user id here', user ? user : '')
+  const soundBite = new Audio(sound)
 
   const sendLog = () => {
     if (user) {
@@ -32,6 +33,7 @@ const Player = () => {
 
   return (
     <section className="hero">
+      <img className="banner" src={img} alt="Meditation is not evasion; it is a serene encounter with reality."></img>
       <div className="buttonArea">
         <Button
           onClick={() => {
@@ -53,10 +55,17 @@ const Player = () => {
         duration={1000}
         frameStyle={(perc) => ({ opacity: perc / 100 })}
       />
+      <br />
+      <br />
       <div className="buttonArea">
-        <Link to="/Signup">
-          <Button variant="dark">Save </Button>
-        </Link>
+        {!user ? (
+          <Link to="/Signup">
+            <Button variant="dark">Save </Button>
+          </Link>
+        ) : (
+          <img className="banner" src={yoga} alt="cartoon doing yoga pose"></img>
+        )}
+        <br />
       </div>
     </section>
   )

@@ -61,7 +61,7 @@ const SignUp = () => {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="password"
+            type="Password should be at least 6 characters"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

@@ -1,47 +1,40 @@
 body {
-  background-image: url('./img/bk2.png');
+  background-image: url('./img/bk7.png');
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
 }
 
-.welcome {
-  color: black;
-  font-size: 2rem;
-  font-weight: 100;
-  font-family: 'Abril Fatface', cursive;
-  font-family: 'Lora', serif;
-  text-align: center;
-}
-
 .hero {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
   font-family: 'Abril Fatface', cursive;
   font-family: 'Lora', serif;
-  
+}
+.navbar-brand {
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Lora', serif;
 }
 
+.navbar {
+  font-family: 'Abril Fatface', cursive;
+  font-family: 'Lora', serif;
+}
+
+.banner {
+  width: 135vh;
+  height: auto;
+}
 .buttonArea {
   height: 3rem;
   min-width: 10rems;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid white;
   cursor: pointer;
-  border-radius: 5px;
   font-size: 20px;
-  transition: all 0.5s ease;
-}
-
-.buttonArea:hover {
-  color: black;
-  background: white;
 }
 
 .time-display {

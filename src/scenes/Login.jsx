@@ -10,6 +10,7 @@ const Login = () => {
   const { user, setUser } = useContext(UserContext)
   let history = useHistory()
   console.log(user)
+
   const handleSubmit = (event) => {
     event.preventDefault()
     firebase
