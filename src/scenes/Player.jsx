@@ -16,7 +16,7 @@ const Player = () => {
   
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/users/${user}`)
+      fetch(`https://meditation-api.web.app/users/${user}`)
       .then(res => res.json())
       .then(data => setStreakHistory(data.count))
       .catch(err => console.log(err))
@@ -31,7 +31,7 @@ const Player = () => {
   const sendLog = () => {
     if (user) {
       console.log('found user')
-      fetch(`http://localhost:5000/users/${user}`, {
+      fetch(`https://meditation-api.web.app/users/${user}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
