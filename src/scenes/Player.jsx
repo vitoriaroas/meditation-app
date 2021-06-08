@@ -4,30 +4,25 @@ import { UserContext } from '../App'
 import { Link } from 'react-router-dom'
 import AnimatedNumber from 'react-animated-number'
 
-import sound from '../sounds/demo.mp3'
+import sound from '../sounds/meditation.mp3'
 import yoga from '../img/bk6.png'
-
-
 
 const Player = () => {
   const [count, setCount] = useState(0)
   const [streakHistory, setStreakHistory] = useState('')
   const [disable, setDisable] = useState(false)
   const { user } = useContext(UserContext)
-  const userInfo = JSON.parse(window.localStorage.getItem('user'))
-
+  
   useEffect(() => {
     if (user) {
       fetch(`https://meditation-api.web.app/users/${user}`)
       .then(res => res.json())
-      .then(res => window.localStorage.setItem('user', JSON.stringify(res)))
-      .then(data => {setStreakHistory(data.count)})
+      .then(data => setStreakHistory(data.count))
       .catch(err => console.log(err))
     }
   },[count])
 
-  
- 
+
   const soundBite = new Audio(sound)
   console.log(count)
   console.log('user id here', user ? user : '')
@@ -68,7 +63,7 @@ const Player = () => {
       </div>
       <br />
       <br />
-      <h2 > Total: {userInfo.count}   </h2>
+      <h2> Total: {streakHistory}   </h2>
       <h3> Today's</h3>
       <AnimatedNumber
         value={count}
