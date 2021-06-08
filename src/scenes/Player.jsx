@@ -4,26 +4,30 @@ import { UserContext } from '../App'
 import { Link } from 'react-router-dom'
 import AnimatedNumber from 'react-animated-number'
 
-import sound from '../sounds/meditation.mp3'
-import img from '../img/bk4.png'
+import sound from '../sounds/demo.mp3'
 import yoga from '../img/bk6.png'
+
+
 
 const Player = () => {
   const [count, setCount] = useState(0)
   const [streakHistory, setStreakHistory] = useState('')
   const [disable, setDisable] = useState(false)
   const { user } = useContext(UserContext)
-  
+  const userInfo = JSON.parse(window.localStorage.getItem('user'))
+
   useEffect(() => {
     if (user) {
       fetch(`https://meditation-api.web.app/users/${user}`)
       .then(res => res.json())
-      .then(data => setStreakHistory(data.count))
+      .then(res => window.localStorage.setItem('user', JSON.stringify(res)))
+      .then(data => {setStreakHistory(data.count)})
       .catch(err => console.log(err))
     }
   },[count])
 
-
+  
+ 
   const soundBite = new Audio(sound)
   console.log(count)
   console.log('user id here', user ? user : '')
@@ -47,7 +51,6 @@ const Player = () => {
 
   return (
     <section className="hero">
-      {/* <img className="banner" src={img} alt="Meditation is not evasion; it is a serene encounter with reality."></img> */}
       <h1 className="quote">"Meditation is not evasion; <br/> it is a serene encounter with reality."</h1>
       
       <div className="buttonArea">
@@ -65,7 +68,7 @@ const Player = () => {
       </div>
       <br />
       <br />
-      <h2> Total: {streakHistory}   </h2>
+      <h2 > Total: {userInfo.count}   </h2>
       <h3> Today's</h3>
       <AnimatedNumber
         value={count}

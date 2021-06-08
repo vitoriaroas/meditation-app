@@ -11,6 +11,7 @@ const Login = () => {
   let history = useHistory()
   console.log(user)
 
+
   const handleSubmit = (event) => {
     event.preventDefault()
     firebase
@@ -68,7 +69,7 @@ const Login = () => {
           Login
         </Button>
         <Link to="/Signup">
-          <Button variant="dark" type="submit">
+          <Button className='btn' variant="dark" type="submit">
             Sign-up
           </Button>
         </Link>

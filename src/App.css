@@ -53,3 +53,8 @@ body {
   background: rgb(255, 255, 255);
   padding: 3%;
 }
+
+.btn  {
+  margin: 10px !important;
+
+}
