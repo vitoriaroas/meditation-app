@@ -4,7 +4,12 @@ body {
   background-size: cover;
   min-height: 100vh;
 }
-
+.quote {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5rem;
+}
 .hero {
   display: flex;
   flex-direction: column;
@@ -47,5 +52,4 @@ body {
 .login-container {
   background: rgb(255, 255, 255);
   padding: 3%;
-  width: min-content;
 }

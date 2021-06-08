@@ -1,5 +1,5 @@
 import Button from 'react-bootstrap/Button'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../App'
 import { Link } from 'react-router-dom'
 import AnimatedNumber from 'react-animated-number'
@@ -10,9 +10,23 @@ import yoga from '../img/bk6.png'
 
 const Player = () => {
   const [count, setCount] = useState(0)
+  const [streakHistory, setStreakHistory] = useState('')
+  const [disable, setDisable] = useState(false)
   const { user } = useContext(UserContext)
+  
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/users/${user}`)
+      .then(res => res.json())
+      .then(data => setStreakHistory(data.count))
+      .catch(err => console.log(err))
+    }
+  },[count])
+
 
   const soundBite = new Audio(sound)
+  console.log(count)
+  console.log('user id here', user ? user : '')
 
   const sendLog = () => {
     if (user) {
@@ -33,11 +47,14 @@ const Player = () => {
 
   return (
     <section className="hero">
-      <img className="banner" src={img} alt="Meditation is not evasion; it is a serene encounter with reality."></img>
+      {/* <img className="banner" src={img} alt="Meditation is not evasion; it is a serene encounter with reality."></img> */}
+      <h1 className="quote">"Meditation is not evasion; <br/> it is a serene encounter with reality."</h1>
+      
       <div className="buttonArea">
-        <Button
+        <Button disabled={disable}
           onClick={() => {
             soundBite.play()
+            setDisable(true)
             setCount(count + 1)
             sendLog()
           }}
@@ -46,6 +63,10 @@ const Player = () => {
           Meditate
         </Button>
       </div>
+      <br />
+      <br />
+      <h2> Total: {streakHistory}   </h2>
+      <h3> Today's</h3>
       <AnimatedNumber
         value={count}
         style={{
@@ -60,7 +81,7 @@ const Player = () => {
       <div className="buttonArea">
         {!user ? (
           <Link to="/Signup">
-            <Button variant="dark">Save </Button>
+            <Button variant="dark">Save Progress </Button>
           </Link>
         ) : (
           <img className="banner" src={yoga} alt="cartoon doing yoga pose"></img>

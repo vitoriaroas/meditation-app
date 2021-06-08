@@ -17,6 +17,7 @@ const SignUp = () => {
       count: 0,
       uid,
     }
+
     fetch('http://localhost:5000/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -61,7 +62,7 @@ const SignUp = () => {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="Password should be at least 6 characters"
+            type="Password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
