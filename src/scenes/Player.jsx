@@ -4,7 +4,7 @@ import { UserContext } from '../App'
 import { Link } from 'react-router-dom'
 import AnimatedNumber from 'react-animated-number'
 
-import sound from '../sounds/demo.mp3'
+import sound from '../sounds/meditation.mp3'
 import yoga from '../img/bk6.png'
 
 const Player = () => {
