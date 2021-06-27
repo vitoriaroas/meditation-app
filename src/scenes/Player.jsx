@@ -7,20 +7,21 @@ import AnimatedNumber from 'react-animated-number'
 import sound from '../sounds/meditation.mp3'
 import yoga from '../img/bk6.png'
 
+
 const Player = () => {
   const [count, setCount] = useState(0)
   const [streakHistory, setStreakHistory] = useState('')
   const [disable, setDisable] = useState(false)
   const { user } = useContext(UserContext)
-  
+
   useEffect(() => {
     if (user) {
       fetch(`https://meditation-api.web.app/users/${user}`)
-      .then(res => res.json())
-      .then(data => setStreakHistory(data.count))
-      .catch(err => console.log(err))
+        .then(res => res.json())
+        .then(data => setStreakHistory(data.count))
+        .catch(err => console.log(err))
     }
-  },[count])
+  }, [count])
 
 
   const soundBite = new Audio(sound)
@@ -46,8 +47,8 @@ const Player = () => {
 
   return (
     <section className="hero">
-      <h1 className="quote">"Meditation is not evasion; <br/> it is a serene encounter with reality."</h1>
-      
+      <h1 className="quote">"Meditation is not evasion; <br /> it is a serene encounter with reality."</h1>
+
       <div className="buttonArea">
         <Button disabled={disable}
           onClick={() => {
